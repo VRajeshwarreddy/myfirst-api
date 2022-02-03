@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="0dc4c226-bb64-4d69-b1fd-91ca1582e307" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="my-first-apiFlow" doc:id="b1591ac7-a501-4540-9e0d-6ac659a8b2f1" >
+		<http:listener doc:name="Listener GET/firstapi" doc:id="faf6da54-ae38-4c82-8efb-0a45116f412c" config-ref="HTTP_Listener_config" path="firstapi"/>
+		<set-payload value="**payload message logger1**" doc:name="Set Payload" doc:id="e8245174-b012-4df8-a264-65b240e4c744" />
+		<logger level="INFO" doc:name="Logger" doc:id="eca5e5a5-9e72-4faa-9872-013f158de22b" message="**payload message of logger2**"/>
+	</flow>
+</mule>
